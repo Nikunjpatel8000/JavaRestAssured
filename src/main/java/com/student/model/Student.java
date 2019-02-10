@@ -3,6 +3,15 @@ package com.student.model;
 import java.util.List;
 
 public class Student {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
     private String firstName;
     private String lastName;
     private String email;

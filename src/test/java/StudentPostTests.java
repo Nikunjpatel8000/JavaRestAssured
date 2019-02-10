@@ -1,3 +1,4 @@
+import com.student.model.Blog;
 import com.student.model.Student;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -22,16 +23,15 @@ public class StudentPostTests {
     }
 
     @Test
-    public void CreateStudent_WithPost()
+    public void It_should_CreateStudent_WithPost()
     {
         ArrayList<String> courses  = new ArrayList<String>();
         courses.add("C++");
         courses.add("Java");
-
         Student student = new Student();
-        student.setFirstName("Rajnikant")
-                .setLastName("Dankhara")
-                .setEmail("rajnikant.dankhara@gmail.com")
+        student.setFirstName("Test")
+                .setLastName("Test")
+                .setEmail("rajnikant.12@gmail.com")
                 .setProgramme("Computer Science")
                 .setCourses(courses);
 

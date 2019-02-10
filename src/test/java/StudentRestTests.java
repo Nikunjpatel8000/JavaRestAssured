@@ -1,5 +1,8 @@
+import com.student.model.Student;
+import com.student.model.Students;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -89,5 +92,39 @@ public class StudentRestTests {
                 .get("list");
 
         System.out.println(response.body().prettyPrint());
+    }
+
+    @Test
+    public void Get_Into_POJO()
+    {
+        Response response =
+            given()
+                .pathParam("id", 1)
+                .get("{id}");
+
+        System.out.println(response.asString());
+        Student student = response.as(Student.class);
+
+        Assert.assertEquals("Vernon", student.getFirstName());
+    }
+
+    @Test
+    public void Get_Into_POJOList() {
+        Response response = given()
+                .get("list");
+
+        System.out.println(response.asString());
+        Students students = response.as(Students.class);
+        System.out.println(students.size());
+    }
+
+    private int GetStudentsCount()
+    {
+        Response response = given()
+                .get("list");
+
+        System.out.println(response.asString());
+        Students students = response.as(Students.class);
+        return students.size();
     }
 }
